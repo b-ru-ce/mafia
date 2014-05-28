@@ -1,0 +1,6 @@
+- items.each do |item|
+  %li{class: item.current?(params) ? 'current-menu-item' : ''}
+    = link_to item.title, item.purpose.blank? ? page_path(item.my_path) : item.purpose
+
+    - if item.has_children?
+      %ul= render :partial => 'layouts/menu/menu', :locals => {:items=>item.children}

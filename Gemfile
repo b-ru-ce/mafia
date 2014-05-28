@@ -44,4 +44,25 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'bms', path: '/home/jewel-sam/poligon/gem/bms'
+#gem 'bms', path: '/home/jewel-sam/poligon/gem/bms'
+
+gem "haml-rails"
+gem "html2haml"
+gem "rails_admin"
+gem "cancan"
+gem "unicode_utils"
+
+gem "devise"
+gem "dragonfly", "~> 1.0.0"
+gem "ckeditor"
+gem "paperclip"
+group :development do
+  gem "annotate"
+  gem "populator"
+  gem "faker"
+  gem "capistrano"
+  gem "rvm-capistrano"
+end
+
+gem "ancestry"
+gem "rails_admin_nestable"

@@ -1,0 +1,13 @@
+- html_title @page.html_title
+- html_meta @page.meta
+
+#main
+  .wrapper.clearfix
+    / posts list
+    #posts-list
+      %h2.page-heading
+        %span= @page.title
+      = render @articles
+      = paginate @articles
+
+    = render 'sidebar'

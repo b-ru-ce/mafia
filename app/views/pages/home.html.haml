@@ -1,0 +1,39 @@
+- html_title
+
+#main
+  .wrapper
+    / slider holder
+    #slider-holder.clearfix
+      .flexslider.home-slider
+        %ul.slides= render partial: 'layouts/slide', collection: Slide.all
+      .home-slider-clearfix
+      / Headline
+      #headline
+        %h1= MyConfig.get_config('h1_home')
+        %p=raw MyConfig.get_config('text_home').gsub(/\n/, '<br/>')
+        %em#corner
+      / ENDS headline
+    / ENDS slider holder
+    / home-block
+    .home-block
+      %h2.home-block-heading
+        %span Интересные посты
+      .one-third-thumbs.clearfix
+        - Article.useful.each_with_index do |article, index|
+          %figure{class: (index+1)%3==0 ? 'last' : ''}
+            %figcaption
+              %strong= article.title
+              %span= truncate(article.short_text, length: 132, omission: '...', separator: ' ')
+              %em= l article.date, format: :long
+              = link_to '', article_path(article.my_path), class: 'opener'
+            = link_to article_path(article.my_path), class: 'thumb' do
+              = image_tag article.image.thumb('436x237#').url, alt: article.title if article.image_uid
+
+    / ENDS home-block
+    / home-block
+    .home-block
+      %h2.home-block-heading
+        %span Последние фотографии
+      .one-fourth-thumbs.clearfix
+        = render partial: 'photo_galleries/photo_gallery', collection: PhotoGallery.last(4), locals: {last: 4}
+        %a.more-link.right{:href => '/gallery'} Еще  →

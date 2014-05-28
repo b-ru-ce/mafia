@@ -1,0 +1,41 @@
+%footer
+  .wrapper
+    %ul.widget-cols.clearfix
+      %li.first-col
+        .widget-block
+          %h4 Последние посты
+          - Article.last_news.each do |article|
+            .recent-post
+              = link_to article_path(article.my_path), class: 'thumb' do
+                = image_tag article.image.thumb('54x54#').url, alt: article.title if article.image_uid
+              .post-head
+                = link_to article.title, article_path(article.my_path)
+                %span=l article.date, format: :long
+      %li.second-col
+        .widget-block
+          %h4= MyConfig.get_config('title1_footer')
+          %p=raw MyConfig.get_config('text1_footer').gsub(/\n/, '<br/>')
+      %li.third-col
+        .widget-block
+          #tweets.footer-col.tweet
+            %h4 Группа ВКонтакте
+            =raw MyConfig.get_config('vkontakte_vidget')
+      %li.fourth-col
+        .widget-block
+          %h4= MyConfig.get_config('title2_footer')
+          %p=raw MyConfig.get_config('text2_footer').gsub(/\n/, '<br/>')
+    .footer-bottom
+      .left
+        © #{Time.now.year}
+        %a{:href => "/"} Анастасия Власова
+      -#.right
+        %ul#social-bar
+          %li
+            = link_to MyConfig.get_config('vkontakte'), class: 'poshytip', title: 'Become a fan', target: '_blank' do
+              %img{:alt => "Facebook", :src => "/assets/social/facebook.png"}/
+          %li
+            %a.poshytip{:href => "", :title => "Follow my tweets"}
+              %img{:alt => "twitter", :src => "/assets/social/twitter.png"}/
+          %li
+            %a.poshytip{:href => "", :title => "Add to the circle"}
+              %img{:alt => "Google plus", :src => "/assets/social/plus.png"}/

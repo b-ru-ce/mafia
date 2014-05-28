@@ -1,0 +1,11 @@
+- last ||= false
+
+- if photo_gallery.main_photo
+  %figure{class: (last and (photo_gallery_counter+1)%last == 0) ? 'last' : '' }
+    %figcaption
+      %strong= photo_gallery.title
+      %span= photo_gallery.text
+      %em=l photo_gallery.date, format: :long
+      = link_to '', photo_gallery_path(photo_gallery.my_path), class: 'opener'
+    = link_to photo_gallery_path(photo_gallery.my_path), class: 'thumb' do
+      = image_tag photo_gallery.main_photo.image.thumb('436x237#').url, alt: photo_gallery.title

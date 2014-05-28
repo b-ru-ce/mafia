@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyText
+  sort: 1
+  ancestry: MyString
+  title_of_window: MyString
+  meta: MyText
+
+two:
+  title: MyText
+  sort: 1
+  ancestry: MyString
+  title_of_window: MyString
+  meta: MyText

@@ -1,0 +1,15 @@
+/ sidebar
+%aside#sidebar
+  %ul
+    %li.block
+      %h4 Категории
+      %ul
+        - Category.all.each do |category|
+          %li.cat-item= link_to category.title, category_path(category.my_path)
+    %li.block
+      %h4 Архив
+      %ul
+        - Article.monthes.each do |month|
+          - monthes = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
+          %li.cat-item= link_to "#{monthes[month.split('-')[0].to_i - 1]}, #{month.split('-')[1]}", "#{request.url.split('?').first}?date=#{month}"
+  %em#corner

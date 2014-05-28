@@ -1,0 +1,9 @@
+.map-content {
+    position: relative;
+    width: 700px;
+    float: left;
+    margin-right: 20px;
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}

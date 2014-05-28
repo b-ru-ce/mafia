@@ -1,0 +1,9 @@
+- html_title @page.html_title
+- html_meta @page.meta
+
+#main
+  .wrapper.clearfix
+    %h2.page-heading
+      %span= @page.title
+    / thumbs
+    .portfolio-thumbs.clearfix= render @photo_galleries

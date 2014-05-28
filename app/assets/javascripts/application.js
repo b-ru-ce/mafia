@@ -11,6 +11,22 @@
 // about supported directives.
 //
 //= require jquery
+//= require theme/jquery.browser
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require lib/jquery-ui-1.10.3.custom.min
+//= require lib/jquery.fancybox-1.3.4
+//= require lib/jquery.form.min
+//= require lib/jquery.validate.min
+//= require theme/css3-mediaqueries
+//= require theme/custom
+//= require theme/tabs
+//= require theme/jquery.tweet
+//= require theme/hoverIntent
+//= require theme/superfish
+//= require theme/supersubs
+//= require theme/jquery.prettyPhoto
+//= require theme/jquery.poshytip.min
+//= require theme/jquery.flexslider-min
+//= require theme/modernizr
+//= require app

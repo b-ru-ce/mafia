@@ -1,0 +1,23 @@
+- html_title @page.html_title
+- html_meta @page.meta
+
+#main
+  .wrapper.clearfix
+    %h2.page-heading
+      %span= @page.title
+    / page content
+    #page-content.clearfix
+      #map_canvas=raw MyConfig.get_config('map')
+      .map-content= raw @page.text
+
+      %aside#contact-sidebar
+        .block
+          %h4 Контакты
+          %p= MyConfig.get_config('text_contacts')
+          %ul.address-block
+            %li.address= MyConfig.get_config('address')
+            %li.phone= MyConfig.get_config('phone1')
+            %li.mobile= MyConfig.get_config('phone2')
+            %li.email
+              %a{:href => "mailto:#{MyConfig.get_config('email')}"}= MyConfig.get_config('email')
+      .clearfix

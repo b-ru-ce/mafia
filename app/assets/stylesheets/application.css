@@ -8,6 +8,19 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require lib/jquery-ui-1.10.3.custom.min
+ *= require lib/jquery.fancybox-1.3.4
+ *= require lib/validate
+ *= require lib/loading
+ *= require theme/style
+ *= require theme/jquery.tweet
+ *= require theme/superfish
+ *= require theme/prettyPhoto
+ *= require theme/tip-twitter
+ *= require theme/tip-yellowsimple
+ *= require theme/flexslider
+ *= require theme/lessframework
+ *= require theme/skin
+ *= require style
  *= require_self
- *= require_tree .
  */

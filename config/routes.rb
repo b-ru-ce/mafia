@@ -1,4 +1,21 @@
 Mafia::Application.routes.draw do
+  get '/galleries/:id-:alias' => 'photo_galleries#show', as: 'photo_gallery'
+  get 'gallery' => 'photo_galleries#index'
+
+  get '/news/:id-:alias' => 'articles#show', as: 'article'
+  get '/news?category=:id-:alias' => 'articles#index', as: 'category'
+  get 'news' => 'articles#index'
+
+  get '/pages/:id-:alias' => 'pages#show', as: 'page'
+  get 'contacts' => 'pages#contacts'
+  root 'pages#home'
+
+  get '/500' => 'errors#server_error'
+  get '/422' => 'errors#server_error'
+  get '/404' => 'errors#not_found'
+  mount Ckeditor::Engine => '/ckeditor'
+  devise_for :users
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

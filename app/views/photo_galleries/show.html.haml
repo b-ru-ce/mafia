@@ -1,0 +1,13 @@
+- html_title @gallery.html_title
+- html_meta @gallery.meta
+
+#main
+  .wrapper.clearfix
+    %h2.page-heading
+      %span= @gallery.title
+    / thumbs
+    .portfolio-thumbs.clearfix
+      - @gallery.photos.each do |photo|
+        %figure
+          = link_to photo.image.encode('jpg').url, title: photo.description, class: 'gallery', rel: 'gallery_js' do
+            = image_tag photo.image.thumb('436x237#').url

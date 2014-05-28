@@ -1,0 +1,13 @@
+-# Set page title
+- html_title @page.html_title
+- html_meta @page.meta
+
+#main
+  .wrapper.clearfix
+    / page content
+    #page-content.clearfix
+      / fullwidth content
+      .fullwidth-content
+        %h2.page-heading
+          %span= @page.title
+        = raw @page.text

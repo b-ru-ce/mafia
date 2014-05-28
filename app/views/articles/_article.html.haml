@@ -1,0 +1,16 @@
+%article.format-standard
+  .entry-date
+    .number= article.date.day
+    .year=l article.date, format: :short_month
+  .feature-image
+    = link_to article.image.encode('jpg').url, class: 'gallery', rel: 'gallery_js' do
+      = image_tag article.image.thumb('960x473#').url, alt: article.title if article.image_uid
+  %h2.post-heading= link_to article.title, article_path(article.my_path)
+  .excerpt= article.short_text
+  = link_to article_path(article.my_path), class: 'read-more' do
+    continue →
+  .meta
+    .categories
+      = raw article.categories.map{|cat| link_to(cat.title, category_path(cat.my_path))}.join(', ')
+    .user
+      %a{:href => "/"} Клуб мафии Пенза
