@@ -1,12 +1,12 @@
 
-name = "application_name"
+name = "mafia"
 
-domain_name = 'site-domain.ru'
+domain_name = 'mafia.wlasowy.ru'
 
 
 set :application, name
 
-set :repository, "~/poligon/" + name
+set :repository, "~/rails_projects/" + name
 
 
 set :deploy_to, "/home/buzulukbz_deploy/sites/" + name
