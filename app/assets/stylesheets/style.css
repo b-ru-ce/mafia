@@ -7,3 +7,7 @@
     margin-bottom: 0;
     padding-bottom: 0;
 }
+
+article .meta div {
+    max-width: 310px;
+}

@@ -19,19 +19,20 @@ window.verstka = function(){
     $('.home-slider').flexslider({
     	animation: "fade",
     	controlNav: false,
-    	keyboardNav: true
+    	keyboardNav: true,
+        randomize: true
     });
     
     //##########################################
 	// PROJECT SLIDER
 	//##########################################
 	
-    $('.project-slider').flexslider({
-    	animation: "fade",
-    	controlNav: true,
-    	directionNav: false,
-    	keyboardNav: true
-    });
+//    $('.project-slider').flexslider({
+//    	animation: "fade",
+//    	controlNav: true,
+//    	directionNav: false,
+//    	keyboardNav: true
+//    });
     
 
 	//##########################################

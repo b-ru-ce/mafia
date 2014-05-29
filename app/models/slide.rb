@@ -5,7 +5,6 @@ class Slide < ActiveRecord::Base
 
   has_ancestry
 
-  validates :title, presence:  true
   validates :image_uid, presence: true
 
   default_scope { order('sort') }

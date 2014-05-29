@@ -11,6 +11,7 @@
               .post-head
                 = link_to article.title, article_path(article.my_path)
                 %span=l article.date, format: :long
+          %a.more-link{:href => '/news'} Все  →
       %li.second-col
         .widget-block
           %h4= MyConfig.get_config('title1_footer')

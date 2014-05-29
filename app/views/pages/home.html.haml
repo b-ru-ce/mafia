@@ -5,7 +5,7 @@
     / slider holder
     #slider-holder.clearfix
       .flexslider.home-slider
-        %ul.slides= render partial: 'layouts/slide', collection: Slide.all
+        %ul.slides= render partial: 'layouts/slide', collection: Slide.order('sort').all
       .home-slider-clearfix
       / Headline
       #headline
