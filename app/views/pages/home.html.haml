@@ -35,5 +35,11 @@
       %h2.home-block-heading
         %span Последние фотографии
       .one-fourth-thumbs.clearfix
-        = render partial: 'photo_galleries/photo_gallery', collection: PhotoGallery.last(4), locals: {last: 4}
+        - if PhotoGallery.count < 4
+          - Photo.all.shuffle.first(4).each_with_index do |photo, index|
+            %figure{class: (index+1)%4 == 0 ? 'last' : '' }
+              = link_to photo.image.encode('jpg').url, title: photo.description, class: 'gallery', rel: 'gallery_js' do
+                = image_tag photo.image.thumb('436x237#').url
+        - else
+          = render partial: 'photo_galleries/photo_gallery', collection: PhotoGallery.last(4), locals: {last: 4}
         %a.more-link.right{:href => '/gallery'} Еще  →

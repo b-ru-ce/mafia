@@ -19,5 +19,6 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @page = Page.purpose('/news').first
   end
 end
