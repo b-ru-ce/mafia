@@ -15,7 +15,39 @@ ru:
       product: 'Товары'
       portfolio_object: 'Портфолио'
       service: 'Услуги'
+      member: 'Члены клуба'
+      gamer: 'Игроки'
+      game: 'Игры'
     attributes:
+      member:
+        id: "№"
+        name: 'Имя'
+        gender: 'Обращение'
+        nick: 'Ник'
+        phone: 'Телефон'
+        email: 'E-mail'
+        vk: 'Аккаунт VK'
+        birthday: 'День рождения'
+        created_at: "Создание"
+        updated_at: "Обновление"
+      game:
+        number: 'Номер п/п'
+        date: 'Дата'
+        game_role_type: 'Победили'
+        id: "№"
+        gamers: 'Игроки'
+        created_at: "Создание"
+        updated_at: "Обновление"
+      gamer:
+        number: 'Номер'
+        member: 'Ник'
+        game_role: 'Роль'
+        guess_2: 'Лучший ход: назвал 2 мафии'
+        guess_3: 'Лучший ход: назвал 3 мафии'
+        first_die: 'Убит в первую ночь'
+        id: "№"
+        created_at: "Создание"
+        updated_at: "Обновление"
       portfolio_object:
         id: "№"
         title: 'Название'

@@ -8,6 +8,7 @@ Mafia::Application.routes.draw do
 
   get '/pages/:id-:alias' => 'pages#show', as: 'page'
   get 'contacts' => 'pages#contacts'
+  get 'rating' => 'pages#rating'
   root 'pages#home'
 
   get '/500' => 'errors#server_error'

@@ -11,4 +11,8 @@ class PagesController < ApplicationController
   def contacts
     @page = Page.purpose('/contacts').first
   end
+
+  def rating
+    @page = Page.purpose('/rating').first
+  end
 end

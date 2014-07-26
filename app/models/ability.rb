@@ -4,7 +4,12 @@ class Ability
 
   def initialize(user)
 
-    if user and user.role?('admin')
+    if user and user.role?('emcee')
+      can :access, :rails_admin   # grant access to rails_admin
+      can :dashboard              # grant access to the dashboard
+      can :manage, [Game, Member, Gamer]
+      can :read, [GameRoleType, GameRole]
+    elsif user and user.role?('admin')
       can :manage, :all
       can :access, :rails_admin   # grant access to rails_admin
       can :dashboard              # grant access to the dashboard

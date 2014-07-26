@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140528091528) do
+ActiveRecord::Schema.define(version: 20140726180201) do
 
   create_table "articles", force: true do |t|
     t.text     "title"
@@ -58,6 +58,63 @@ ActiveRecord::Schema.define(version: 20140528091528) do
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type"
+
+  create_table "game_role_types", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "game_roles", force: true do |t|
+    t.integer  "game_role_type_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "gamers", force: true do |t|
+    t.integer  "number"
+    t.integer  "member_id"
+    t.integer  "game_role_id"
+    t.boolean  "guess_2"
+    t.boolean  "guess_3"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "game_id"
+    t.boolean  "first_die"
+  end
+
+  create_table "games", force: true do |t|
+    t.integer  "number"
+    t.date     "date"
+    t.integer  "game_role_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "members", force: true do |t|
+    t.string   "name"
+    t.string   "nick"
+    t.string   "phone"
+    t.string   "vk"
+    t.string   "email"
+    t.string   "gender"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "rating"
+    t.integer  "game_count"
+    t.integer  "win_game_count"
+    t.integer  "game_piece_count"
+    t.integer  "win_game_piece_count"
+    t.integer  "game_commissar_count"
+    t.integer  "win_game_commissar_count"
+    t.integer  "game_mafia_count"
+    t.integer  "win_game_mafia_count"
+    t.integer  "game_don_count"
+    t.integer  "win_game_don_count"
+    t.integer  "first_die_count"
+    t.date     "birthday"
+  end
 
   create_table "my_configs", force: true do |t|
     t.string   "key"

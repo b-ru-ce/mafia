@@ -221,7 +221,7 @@ RailsAdmin.config do |config|
         field :show_in_menu
         field :purpose, :enum do
           enum do
-            [ ['Главная', '/'] , ['Новости', '/news'], ['Каталог', '/catalog'],  ['Галерея', '/gallery'], ['О компании', '/about'], ['Отзывы', '/reviews'], ['Контакты', '/contacts'], ['Портфолио', '/portfolio'], ['Услуги', '/services'] ]
+            [ ['Главная', '/'] , ['Новости', '/news'], ['Каталог', '/catalog'],  ['Галерея', '/gallery'], ['О компании', '/about'], ['Отзывы', '/reviews'], ['Контакты', '/contacts'], ['Портфолио', '/portfolio'], ['Услуги', '/services'], ['Рейтинг', '/rating'] ]
           end
         end
 
@@ -291,7 +291,7 @@ RailsAdmin.config do |config|
   # config.default_items_per_page = 20
 
   # Exclude specific models (keep the others):
-  config.excluded_models = [Ckeditor::Asset, Ckeditor::Picture, Ckeditor::AttachmentFile, ArticlesCategories]
+  config.excluded_models = [Ckeditor::Asset, Ckeditor::Picture, Ckeditor::AttachmentFile, ArticlesCategories, GameRole, GameRoleType]
 
   # Include specific models (exclude the others):
   # config.included_models = []
@@ -364,5 +364,116 @@ RailsAdmin.config do |config|
   config.model Role do
     navigation_label 'Общее'
     weight 0
+  end
+
+  config.model Member do
+    navigation_label "Рейтинг"
+    weight -1
+
+    object_label_method do
+      :custom_label_member
+    end
+
+    list do
+      field :id
+      field :name
+      field :nick
+    end
+
+    show do
+      field :id
+      field :name
+      field :nick
+      field :gender
+      field :phone
+      field :vk
+      field :email
+      field :birthday
+      field :created_at
+      field :updated_at
+    end
+
+    edit do
+      field :name
+      field :nick
+      field :gender, :enum do
+        enum do
+          [ ['г-н', 'г-н'] , ['г-жа', 'г-жа'] ]
+        end
+      end
+      field :phone
+      field :vk
+      field :email
+      field :birthday
+    end
+  end
+
+  config.model Game do
+    navigation_label "Рейтинг"
+    configure :gamers do
+      visible true
+    end
+
+    list do
+      field :date
+      field :game_role_type
+    end
+
+    show do
+      field :date
+      field :game_role_type
+      field :gamers
+      field :created_at
+      field :updated_at
+    end
+
+    edit do
+      field :date
+      field :game_role_type
+      field :gamers
+    end
+  end
+
+  config.model Gamer do
+    navigation_label "Рейтинг"
+    visible false
+
+    object_label_method do
+      :custom_label_gamer
+    end
+
+    list do
+      field :number
+      field :member
+      field :game_role
+      field :guess_2
+      field :guess_3
+    end
+
+    show do
+      field :number
+      field :member
+      field :game_role
+      field :guess_2
+      field :guess_3
+      field :created_at
+    end
+
+    edit do
+      field :number
+      field :member
+      field :game_role
+      field :first_die
+      field :guess_2
+      field :guess_3
+    end
+  end
+
+  def custom_label_gamer
+    "Игрок №#{self.number}"
+  end
+
+  def custom_label_member
+    "#{self.gender} #{self.nick}"
   end
 end

@@ -1,3 +1,5 @@
+a, a:focus {outline: none;}
+
 .map-content {
     position: relative;
     width: 700px;
@@ -10,4 +12,36 @@
 
 article .meta div {
     max-width: 310px;
+}
+
+table {
+    width: 100%;
+}
+
+table th {
+    padding: 10px;
+
+    background-color: #444;
+    border-bottom: 3px solid #BCBCBA;
+
+    color: #E2E0D7;
+    font-family: 'Yanone Kaffeesatz', Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    text-align: left;
+}
+
+table th span {
+    display: block;
+    font-size: 16px;
+}
+
+table td {
+    padding: 10px;
+    border-bottom: 1px solid #BCBCBA;
+    color: #444444;
+}
+
+table tr td:nth-child(2) {
+    font-weight: bold;
 }
