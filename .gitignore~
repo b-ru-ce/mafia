@@ -15,5 +15,3 @@
 /public/system/dragonfly/development
 /log/*.log
 /tmp
-
-.idea/
