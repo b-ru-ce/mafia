@@ -33,9 +33,9 @@
                 За дона
                 %span побед/всего
               %th Первая кровь
-              %th Рейтинг
+              %th Сумма баллов
           %tbody
-            - Member.order('rating').each_with_index do |member, index|
+            - Member.order('rating DESC').each_with_index do |member, index|
               %tr
                 %td= index + 1
                 %td= member.nick

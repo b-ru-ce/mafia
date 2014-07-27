@@ -204,6 +204,7 @@ RailsAdmin.config do |config|
       field :id
       field :title
       field :text
+      field :alias
       field :created_at
       field :updated_at
     end
