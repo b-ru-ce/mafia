@@ -45,3 +45,14 @@ table td {
 table tr td:nth-child(2) {
     font-weight: bold;
 }
+
+#map_canvas {
+    width: 680px;
+    float: left;
+
+    margin: 0 20px 0 0;
+}
+
+#contact-sidebar {
+    height: 260px;
+}
