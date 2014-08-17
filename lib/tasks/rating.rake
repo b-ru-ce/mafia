@@ -36,7 +36,7 @@ namespace :db do
           (member.game_commissar_count - member.win_game_commissar_count) * (-1) +
           (member.game_don_count - member.win_game_don_count) * (-1) +
           member.win_game_don_count * 5 +
-          member.win_game_mafia_count * 3 +
+          member.win_game_mafia_count * 4 +
           gamers.where(guess_2: true).count * 0.5 + 
           gamers.where(guess_3: true).count
 
