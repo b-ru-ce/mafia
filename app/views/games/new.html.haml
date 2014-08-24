@@ -1,0 +1,46 @@
+#main
+  .wrapper.clearfix
+    #page-content.clearfix
+      .fullwidth-content
+        %h2.page-heading
+          %span= @game.id ? 'Редактирование игры' : 'Cоздание новой игры'
+
+        %p= flash[:notice]
+
+        = form_for @game do |f|
+          = f.hidden_field :id if f.object.id
+          = f.hidden_field :date
+
+          %table
+            %thead
+              %th Номер
+              %th Игрок
+              %th Роль
+              %th Убит в первую ночь
+              %th Угадал двух мафий
+              %th Угадал трех мафий
+
+            %tbody
+              = f.fields_for :gamers do |g|
+                %tr
+                  %td
+                    = g.hidden_field :number
+                    = g.object.number
+                  %td= g.select :member_id, options_from_collection_for_select(Member.all, :id, :nick, g.object.member_id)
+                  %td= g.select :game_role_id, options_from_collection_for_select(GameRole.all, :id, :name, g.object.game_role_id)
+                  %td= g.check_box :first_die
+                  %td= g.check_box :guess_2
+                  %td= g.check_box :guess_3
+
+          %br
+          %p
+            %label Победили
+            = f.select :game_role_type_id, options_from_collection_for_select(GameRoleType.all, :id, :name, f.object.game_role_type_id)
+
+          = f.submit @game.id ? 'Сохранить' : 'Создать'
+
+          %br
+          %br
+          %p= link_to 'Создать новую игру', '/games/new'
+          %p= link_to 'Посмотреть список сегодняшних игр', '/games'
+          %p= link_to 'Добавить участника', '/admin/member/new'

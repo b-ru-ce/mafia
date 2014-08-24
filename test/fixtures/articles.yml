@@ -17,3 +17,20 @@ two:
   text: MyText
   title_of_window: MyString
   meta: MyText
+
+# == Schema Information
+#
+# Table name: articles
+#
+#  id              :integer          not null, primary key
+#  title           :text
+#  date            :date
+#  image_uid       :string(255)
+#  short_text      :text
+#  text            :text
+#  title_of_window :string(255)
+#  meta            :text
+#  created_at      :datetime
+#  updated_at      :datetime
+#  usefull         :boolean
+#

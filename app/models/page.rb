@@ -34,6 +34,29 @@ class Page < ActiveRecord::Base
         (purpose == '/catalog' and params[:controller] == 'catalog') or
         (purpose == '/services' and params[:controller] == 'services') or
         (purpose == '/portfolio' and params[:controller] == 'portfolio_objects')
+        (purpose == '/rating' and params[:action] == 'rating')
   end
 
 end
+
+# == Schema Information
+#
+# Table name: pages
+#
+#  id              :integer          not null, primary key
+#  title           :string(255)
+#  text            :text
+#  purpose         :string(255)
+#  show_in_menu    :boolean
+#  menu            :string(255)
+#  meta            :text
+#  title_of_window :string(255)
+#  ancestry        :string(255)
+#  sort            :integer
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+# Indexes
+#
+#  index_pages_on_ancestry  (ancestry)
+#

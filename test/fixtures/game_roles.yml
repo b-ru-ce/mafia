@@ -7,3 +7,14 @@ one:
 two:
   role_type_id: 1
   name: MyString
+
+# == Schema Information
+#
+# Table name: game_roles
+#
+#  id                :integer          not null, primary key
+#  game_role_type_id :integer
+#  name              :string(255)
+#  created_at        :datetime
+#  updated_at        :datetime
+#

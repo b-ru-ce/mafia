@@ -379,6 +379,7 @@ RailsAdmin.config do |config|
       field :id
       field :name
       field :nick
+      field :birthday
     end
 
     show do

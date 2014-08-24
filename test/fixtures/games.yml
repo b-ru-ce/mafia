@@ -9,3 +9,15 @@ two:
   number: 1
   date: 2014-07-26
   type_game_role_id: 1
+
+# == Schema Information
+#
+# Table name: games
+#
+#  id                :integer          not null, primary key
+#  number            :integer
+#  date              :date
+#  game_role_type_id :integer
+#  created_at        :datetime
+#  updated_at        :datetime
+#

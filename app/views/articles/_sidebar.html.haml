@@ -11,5 +11,5 @@
       %ul
         - Article.monthes.each do |month|
           - monthes = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
-          %li.cat-item= link_to "#{monthes[month.split('-')[0].to_i - 1]}, #{month.split('-')[1]}", "#{request.url.split('?').first}?date=#{month}"
+          %li.cat-item= link_to "#{monthes[month.split('-')[0].to_i - 1]}, #{month.split('-')[1]}", "/news?date=#{month}"
   %em#corner

@@ -1,0 +1,9 @@
+#main
+  .wrapper.clearfix
+    #page-content.clearfix
+      .fullwidth-content
+        %h2.page-heading
+          %span Список сегодняшних игр
+
+        - @games.each_with_index do |game, index|
+          %p= link_to "Игра №#{index + 1}", edit_game_path(game)

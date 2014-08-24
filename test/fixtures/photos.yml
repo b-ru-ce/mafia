@@ -15,3 +15,22 @@ two:
   sort: 1
   ancestry: MyString
   main: false
+
+# == Schema Information
+#
+# Table name: photos
+#
+#  id               :integer          not null, primary key
+#  photo_gallery_id :integer
+#  image_uid        :string(255)
+#  description      :text
+#  sort             :integer
+#  ancestry         :string(255)
+#  main             :boolean
+#  created_at       :datetime
+#  updated_at       :datetime
+#
+# Indexes
+#
+#  index_photos_on_ancestry  (ancestry)
+#

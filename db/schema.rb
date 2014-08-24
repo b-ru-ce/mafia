@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140726180201) do
+ActiveRecord::Schema.define(version: 20140823110709) do
 
   create_table "articles", force: true do |t|
     t.text     "title"
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 20140726180201) do
     t.string   "gender"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "rating"
+    t.float    "rating"
     t.integer  "game_count"
     t.integer  "win_game_count"
     t.integer  "game_piece_count"
