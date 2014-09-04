@@ -10,6 +10,8 @@ ready = ->
 
   $('a.fancybox_link_in_text').fancybox()
 
+  $('select[id*="member_id"]').chosen({width: '200px'})
+
   verstka()
 
 $(document).on 'page:fetch', ->

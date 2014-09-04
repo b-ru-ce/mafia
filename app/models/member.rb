@@ -3,6 +3,8 @@ class Member < ActiveRecord::Base
 
   validates :nick, presence: true
   validates :gender, presence: true
+
+  default_scope {order('nick')}
 end
 
 # == Schema Information

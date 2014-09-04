@@ -7,3 +7,11 @@
 
         - @games.each_with_index do |game, index|
           %p= link_to "Игра №#{index + 1}", edit_game_path(game)
+          - game.gamers.each do |g|
+            Игрок №#{g.number} - #{g.member.gender} #{g.member.nick}
+            %br
+          %br
+
+        %p= link_to 'Создать новую игру', '/games/new'
+        %p= link_to 'Добавить участника', '/admin/member/new'
+        %p= link_to 'Пересчитать рейтинг', '/games/rating'

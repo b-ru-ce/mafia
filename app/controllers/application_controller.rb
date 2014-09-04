@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to '/users/sign_in', :alert => exception.message
+  end
+
 
   before_filter :reload_rails_admin, :if => :rails_admin_path?
 

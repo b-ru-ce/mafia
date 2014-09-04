@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140823110709) do
+ActiveRecord::Schema.define(version: 20140904073244) do
 
   create_table "articles", force: true do |t|
     t.text     "title"
@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(version: 20140823110709) do
     t.integer  "win_game_don_count"
     t.integer  "first_die_count"
     t.date     "birthday"
+    t.float    "sum_points"
   end
 
   create_table "my_configs", force: true do |t|

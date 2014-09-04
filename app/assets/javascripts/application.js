@@ -18,6 +18,7 @@
 //= require lib/jquery.fancybox-1.3.4
 //= require lib/jquery.form.min
 //= require lib/jquery.validate.min
+//= require lib/chosen.jquery.min
 //= require theme/css3-mediaqueries
 //= require theme/custom
 //= require theme/tabs
