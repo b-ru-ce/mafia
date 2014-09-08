@@ -12,6 +12,13 @@
 
         = raw @page.text
 
+        -#- Member.unscoped.each_with_index do |member, index|
+        -#  - if !member.phone.blank?
+        -#    = member.phone
+        -#    ;
+        -#    = "#{member.gender} #{member.nick}"
+        -#    </br>
+
         %table
           %thead
             %tr

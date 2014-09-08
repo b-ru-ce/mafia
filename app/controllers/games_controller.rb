@@ -56,13 +56,13 @@ class GamesController < ApplicationController
   def rating
     first_die_count = 10
     mafia_plus_count = 40
-    mafia_minus_count = 13
-    citizen_plus_count = 20
-    citizen_minus_count = 7
+    mafia_minus_count = 20
+    citizen_plus_count = 30
+    citizen_minus_count = 15
     commissar_plus_count = 50
-    commissar_minus_count = 17
+    commissar_minus_count = 25
     don_plus_count = 50
-    don_minus_count = 17
+    don_minus_count = 25
     gamers = {}
 
     piece = GameRole.find_by_name('мирный').id
@@ -155,7 +155,7 @@ class GamesController < ApplicationController
       member.save
     end
 
-    redirect_to :back
+    redirect_to "/rating"
   end
 
 
