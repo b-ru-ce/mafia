@@ -1,13 +1,12 @@
 %tr
   %td= index + 1
-  %td= "#{member.gender} #{member.nick}"
+  %td= link_to member.nick_with_gender, member
   %td #{member.win_game_count} / #{member.game_count}
   %td #{member.win_game_piece_count} / #{member.game_piece_count}
   %td #{member.win_game_commissar_count} / #{member.game_commissar_count}
   %td #{member.win_game_mafia_count} / #{member.game_mafia_count}
   %td #{member.win_game_don_count} / #{member.game_don_count}
   %td= member.first_die_count
-  %td= member.sum_points
   - if(member.rating.round > 0)
     %td= member.rating.round
   -else

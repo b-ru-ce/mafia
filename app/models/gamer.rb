@@ -22,4 +22,5 @@ end
 #  updated_at   :datetime
 #  game_id      :integer
 #  first_die    :boolean
+#  rating       :float
 #

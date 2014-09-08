@@ -384,6 +384,7 @@ RailsAdmin.config do |config|
 
     show do
       field :id
+      field :avatar
       field :name
       field :nick
       field :gender
@@ -407,6 +408,7 @@ RailsAdmin.config do |config|
       field :vk
       field :email
       field :birthday
+      field :avatar
     end
   end
 

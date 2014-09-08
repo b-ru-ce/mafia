@@ -56,3 +56,34 @@ table tr td:nth-child(2) {
 #contact-sidebar {
     height: 260px;
 }
+
+.normal-strong strong{
+    font-weight: bold;
+
+}
+
+.game_table{
+    width: 340px;
+    float: left;
+    margin-right: 5px;
+}
+
+.role_3{
+    background-color: #ff2c28;
+}
+
+.role_2, .role_4{
+    background-color: #0c0202;
+    color: #ffffff;
+}
+
+.rating_plus{
+    color: green;
+}
+.rating_minus{
+    color: #ff2c28;
+}
+
+.rating_table_bold{
+    font-weight: bold;
+}

@@ -63,6 +63,19 @@ class GamesController < ApplicationController
     commissar_minus_count = 25
     don_plus_count = 50
     don_minus_count = 25
+
+
+    # first_die_count = 10
+    # mafia_plus_count = 35
+    # mafia_minus_count = 17
+    # citizen_plus_count = 30
+    # citizen_minus_count = 15
+    # commissar_plus_count = 40
+    # commissar_minus_count = 20
+    # don_plus_count = 40
+    # don_minus_count = 20
+    guess_2 = 5
+    guess_3 = 10
     gamers = {}
 
     piece = GameRole.find_by_name('мирный').id
@@ -95,16 +108,7 @@ class GamesController < ApplicationController
 
       member.game_count = member.game_piece_count + member.game_commissar_count + member.game_mafia_count + member.game_don_count
       member.win_game_count = member.win_game_piece_count + member.win_game_commissar_count + member.win_game_mafia_count + member.win_game_don_count
-      member.rating = first_die_count * member.first_die_count
-
-      member.sum_points = member.win_game_piece_count * 3 +
-          member.win_game_commissar_count * 4 +
-          (member.game_commissar_count - member.win_game_commissar_count) * (-1) +
-          (member.game_don_count - member.win_game_don_count) * (-1) +
-          member.win_game_don_count * 5 +
-          member.win_game_mafia_count * 4 +
-          gamers.where(guess_2: true).count * 0.5 +
-          gamers.where(guess_3: true).count
+      member.rating = 0
 
       member.save
     end
@@ -122,31 +126,42 @@ class GamesController < ApplicationController
 
       mafia_rating = (mafia_rating/3.0)
       citizen_rating = (citizen_rating/7.0)
-      logger.debug mafia_rating
-      logger.debug citizen_rating
+
       k = 1000
       # k = (mafia_rating + citizen_rating)*5 + 1
       mafia_elo =  1.0/(1+10**((citizen_rating-mafia_rating)/k))
+      # mafia_elo =  0.5
       citizen_elo =  1.0/(1+10**((mafia_rating-citizen_rating)/k))
+      # citizen_elo =  0.5
 
       game.gamers.each do |gamer|
         member = members[gamer.member_id]
 
         if game.game_role_type_id == mafia
-          member.rating += 2*mafia_plus_count*(1-mafia_elo)  if gamer.game_role_id == mafia
-          member.rating += 2*don_plus_count*(1-mafia_elo)  if gamer.game_role_id == don
-          member.rating -= 2*citizen_minus_count*citizen_elo  if gamer.game_role_id == piece
-          member.rating -= 2*commissar_minus_count*citizen_elo  if gamer.game_role_id == commissar
+          gamer.rating = 2*mafia_plus_count*(1-mafia_elo)  if gamer.game_role_id == mafia
+          gamer.rating = 2*don_plus_count*(1-mafia_elo)  if gamer.game_role_id == don
+          gamer.rating = -2*citizen_minus_count*citizen_elo  if gamer.game_role_id == piece
+          gamer.rating = -2*commissar_minus_count*citizen_elo  if gamer.game_role_id == commissar
         else
-
-          member.rating -= 2*mafia_minus_count*mafia_elo  if gamer.game_role_id == mafia
-          member.rating -= 2*don_minus_count*mafia_elo  if gamer.game_role_id == don
-          member.rating += 2*citizen_plus_count*(1-citizen_elo)  if gamer.game_role_id == piece
-          member.rating += 2*commissar_plus_count*(1-citizen_elo)  if gamer.game_role_id == commissar
+          gamer.rating = -2*mafia_minus_count*mafia_elo  if gamer.game_role_id == mafia
+          gamer.rating = -2*don_minus_count*mafia_elo  if gamer.game_role_id == don
+          gamer.rating = 2*citizen_plus_count*(1-citizen_elo)  if gamer.game_role_id == piece
+          gamer.rating = 2*commissar_plus_count*(1-citizen_elo)  if gamer.game_role_id == commissar
         end
+
+        gamer.rating += first_die_count if gamer.first_die
+        gamer.rating += guess_2 if gamer.guess_2
+        gamer.rating += guess_3 if gamer.guess_3
+
+        gamer.current_rating = member.rating
+        member.rating += gamer.rating
+
         if member.rating < 0
+          gamer.rating = gamer.rating - member.rating
           member.rating = 0
         end
+
+        gamer.save
 
       end
     end

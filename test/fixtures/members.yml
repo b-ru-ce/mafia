@@ -40,4 +40,5 @@ two:
 #  win_game_don_count       :integer
 #  first_die_count          :integer
 #  birthday                 :date
+#  avatar_uid               :string(255)
 #
