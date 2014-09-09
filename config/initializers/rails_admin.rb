@@ -222,7 +222,7 @@ RailsAdmin.config do |config|
         field :show_in_menu
         field :purpose, :enum do
           enum do
-            [ ['Главная', '/'] , ['Новости', '/news'], ['Каталог', '/catalog'],  ['Галерея', '/gallery'], ['О компании', '/about'], ['Отзывы', '/reviews'], ['Контакты', '/contacts'], ['Портфолио', '/portfolio'], ['Услуги', '/services'], ['Рейтинг', '/rating'] ]
+            [ ['Главная', '/'] , ['Новости', '/news'], ['Каталог', '/catalog'],  ['Галерея', '/gallery'], ['О компании', '/about'], ['Отзывы', '/reviews'], ['Контакты', '/contacts'], ['Портфолио', '/portfolio'], ['Услуги', '/services'], ['Рейтинг', '/rating'], ['Архив игр', '/game_all'] ]
           end
         end
 

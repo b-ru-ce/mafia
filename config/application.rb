@@ -7,7 +7,13 @@ require 'rails/all'
 Bundler.require(:default, Rails.env)
 
 module Mafia
+
+
+
+
   class Application < Rails::Application
+
+
     config.exceptions_app = self.routes
     config.action_controller.include_all_helpers = false
     config.i18n.default_locale = :ru

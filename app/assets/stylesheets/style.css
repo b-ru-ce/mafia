@@ -63,16 +63,18 @@ table tr td:nth-child(2) {
 }
 
 .game_table{
-    width: 340px;
+    width: 49%;
     float: left;
     margin-right: 5px;
 }
-
+.role_1{text-align: center;}
 .role_3{
+    text-align: center;
     background-color: #ff2c28;
 }
 
 .role_2, .role_4{
+    text-align: center;
     background-color: #0c0202;
     color: #ffffff;
 }

@@ -15,4 +15,8 @@ class PagesController < ApplicationController
   def rating
     @page = Page.purpose('/rating').first
   end
+
+  def game_all
+    @page = Page.purpose('/game_all').first
+  end
 end
