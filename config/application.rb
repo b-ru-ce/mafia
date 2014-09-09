@@ -8,9 +8,6 @@ Bundler.require(:default, Rails.env)
 
 module Mafia
 
-
-
-
   class Application < Rails::Application
 
 
