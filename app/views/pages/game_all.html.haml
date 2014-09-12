@@ -56,7 +56,7 @@
                     %td
                       №#{g.number}
 
-                      #{g.member.gender} #{g.member.nick}
+                      = link_to g.member.nick_with_gender, g.member
                       -if g.first_die
                         %img.tooltip{:title => "Убит в первую ночь", :src => "/assets/first_die.png", width:"13px"}/
                         -if g.guess_2
