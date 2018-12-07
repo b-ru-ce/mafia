@@ -1,0 +1,115 @@
+- html_title @page.html_title
+- html_meta @page.meta
+
+#main
+  .wrapper.clearfix
+    / page content
+    #page-content.clearfix
+      / fullwidth content
+      .fullwidth-content
+        %h2.page-heading
+          %span= @page.title
+
+        = raw @page.text
+
+      .project-description2
+
+        - prev_date = nil
+        - Game.order(' id DESC').order(' date DESC').each_with_index do |game, index|
+          - if prev_date != game.date
+            - if !prev_date.nil?
+              %br
+              .clearfix &nbsp;
+            - prev_date = game.date
+            %h2= game.date
+            %br
+
+
+
+          .div.game_table
+            %br
+            %h4
+              = "Игра №#{game.id}"
+
+              -#- game_elo = game.get_game_koef
+              -#= game_elo[:mafia_rating].round
+              -#= game_elo[:citizen_rating].round
+              -#%br
+              -#= 2*(1 - game_elo[:mafia_elo].round(3))
+              -#= 2*(1 - game_elo[:citizen_elo].round(3))
+            %br
+            %table
+              %thead
+                %tr
+
+                  %th Ник
+                  %th Роль
+                  %th Рейтинг
+              %tbody
+
+
+                - game.gamers.each do |g|
+
+
+                  %tr
+
+                    %td
+                      №#{g.number}
+
+                      = link_to g.member.nick_with_gender, g.member
+                      -if g.first_die
+                        %img.tooltip{:title => "Убит в первую ночь", :src => "/assets/first_die.png", width:"13px"}/
+                        -if g.guess_2
+                          %span.tooltip{:title => "Угадал 2х мафий"}
+                            x2
+                        -if g.guess_3
+                          %span.tooltip{:title => "Угадал 3х мафий"}
+                            x3
+                    %td{:class=>'role_'+g.game_role_id.to_s}
+
+                      #{g.game_role.name}
+
+                    %td
+                      - title = 'Рейтинг:'
+                      - tmp_rating = g.rating
+
+                      - point = 1
+                      - if game.game_role_type_id == PIECE
+                        - if g.game_role_id == PIECE
+                          - point = CITIZEN_PLUS_COUNT
+                        - if g.game_role_id == COMMISSAR
+                          - point = COMMISSAR_PLUS_COUNT
+                        - if g.game_role_id == MAFIA
+                          - point = MAFIA_MINUS_COUNT
+                        - if g.game_role_id == DON
+                          - point = DON_MINUS_COUNT
+                      -else
+                        - if g.game_role_id == PIECE
+                          - point = CITIZEN_MINUS_COUNT
+                        - if g.game_role_id == COMMISSAR
+                          - point = COMMISSAR_MINUS_COUNT
+                        - if g.game_role_id == MAFIA
+                          - point = MAFIA_PLUS_COUNT
+                        - if g.game_role_id == DON
+                          - point = DON_PLUS_COUNT
+
+                      -title_dop = ''
+                      -if g.first_die
+                        - title_dop = '<br> +'+FIRST_DIE_COUNT.to_s+' первая кровь'
+                        - tmp_rating -= FIRST_DIE_COUNT
+                      -if g.guess_2
+                        - title_dop += '<br> +'+GUESS_2.to_s+' угадал двух мафий'
+                        - tmp_rating -= GUESS_2
+                      -if g.guess_3
+                        - title_dop += '<br> +'+GUESS_3.to_s+' угадал трех мафий'
+                        - tmp_rating -= GUESS_3
+                      - koef = (tmp_rating * 1.0) / point
+                      - title += "<br>" + (koef >= 0 ? "+" :'-')+ koef.abs.round(2).to_s+' * ' + point.to_s + ' = ' + (koef >= 0 ? "+" :'-') + tmp_rating.abs.round.to_s + title_dop
+
+                      %span.tooltip{:title => title}
+                        = g.current_rating.round
+                      %span.tooltip{:title=>title, :class=>g.rating.round >0 ? 'rating_plus':'rating_minus'}
+                        -if g.rating.round >0
+                          = "(+" + g.rating.round.to_s+")"
+                        -else
+                          = "("+g.rating.round.to_s+")"

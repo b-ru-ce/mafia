@@ -29,5 +29,6 @@
 //= require theme/jquery.prettyPhoto
 //= require theme/jquery.poshytip.min
 //= require theme/jquery.flexslider-min
+//= require lib/jquery.tooltipster.min
 //= require theme/modernizr
 //= require app

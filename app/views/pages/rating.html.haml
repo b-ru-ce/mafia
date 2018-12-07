@@ -40,7 +40,6 @@
                 За дона
                 %span побед/всего
               %th Первая кровь
-              %th Сумма баллов
               %th Рейтинг
           %tbody
             - Member.unscoped.where('game_count > 5').order('rating DESC').each_with_index do |member, index|

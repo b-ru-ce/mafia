@@ -12,6 +12,9 @@ ready = ->
 
   $('select[id*="member_id"]').chosen({width: '200px'})
 
+  $('.tooltip').tooltipster({contentAsHTML: true});
+
+
   verstka()
 
 $(document).on 'page:fetch', ->

@@ -9,6 +9,7 @@ Mafia::Application.routes.draw do
   get '/pages/:id-:alias' => 'pages#show', as: 'page'
   get 'contacts' => 'pages#contacts'
   get 'rating' => 'pages#rating'
+  get 'game_all' => 'pages#game_all'
   root 'pages#home'
 
   get '/500' => 'errors#server_error'
@@ -21,6 +22,9 @@ Mafia::Application.routes.draw do
   resources :games do
     get :rating, on: :collection
   end
+
+  resources :members
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

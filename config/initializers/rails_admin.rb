@@ -222,7 +222,7 @@ RailsAdmin.config do |config|
         field :show_in_menu
         field :purpose, :enum do
           enum do
-            [ ['Главная', '/'] , ['Новости', '/news'], ['Каталог', '/catalog'],  ['Галерея', '/gallery'], ['О компании', '/about'], ['Отзывы', '/reviews'], ['Контакты', '/contacts'], ['Портфолио', '/portfolio'], ['Услуги', '/services'], ['Рейтинг', '/rating'] ]
+            [ ['Главная', '/'] , ['Новости', '/news'], ['Каталог', '/catalog'],  ['Галерея', '/gallery'], ['О компании', '/about'], ['Отзывы', '/reviews'], ['Контакты', '/contacts'], ['Портфолио', '/portfolio'], ['Услуги', '/services'], ['Рейтинг', '/rating'], ['Архив игр', '/game_all'] ]
           end
         end
 
@@ -384,6 +384,7 @@ RailsAdmin.config do |config|
 
     show do
       field :id
+      field :avatar
       field :name
       field :nick
       field :gender
@@ -407,6 +408,7 @@ RailsAdmin.config do |config|
       field :vk
       field :email
       field :birthday
+      field :avatar
     end
   end
 
