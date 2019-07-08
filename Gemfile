@@ -60,8 +60,9 @@ group :development do
   gem "annotate"
   gem "populator"
   gem "faker"
-  gem "capistrano"
-  gem "rvm-capistrano"
+  gem "capistrano", '2.15.4'
+  # gem "capistrano-rbenv"
+  # gem "rvm-capistrano"
 end
 
 gem "ancestry"
