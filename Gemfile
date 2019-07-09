@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails', '4.2.11.1'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3',  '~> 1.3.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -48,7 +48,7 @@ end
 
 gem "haml-rails"
 gem "html2haml"
-gem "rails_admin"
+gem "rails_admin", "1.4.2", git: "https://github.com/sferik/rails_admin.git", :branch => '1.x-stable'
 gem "cancan"
 gem "unicode_utils"
 
@@ -62,9 +62,15 @@ group :development do
   gem "annotate"
   gem "populator"
   gem "faker"
-  gem "capistrano", '2.15.4'
+
+
+  gem "capistrano"
   # gem "capistrano-rbenv"
-  # gem "rvm-capistrano"
+
+  gem 'capistrano-bundler' # for capistrano/bundler
+  gem 'capistrano-rails'
+  gem "capistrano-scm-gitcopy"
+  gem "rvm-capistrano"
 end
 
 gem "ancestry"
