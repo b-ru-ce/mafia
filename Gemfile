@@ -58,6 +58,9 @@ gem "devise"
 gem "dragonfly", "~> 1.0.0"
 gem "ckeditor"
 gem "paperclip"
+
+gem "unicorn"
+
 group :development do
   gem "annotate"
   gem "populator"
