@@ -52,6 +52,8 @@ gem "rails_admin"
 gem "cancan"
 gem "unicode_utils"
 
+gem "safe_yaml", "~> 1.0.5"
+
 gem "devise"
 gem "dragonfly", "~> 1.0.0"
 gem "ckeditor"
